@@ -40,7 +40,7 @@ const LINKS = [
 
 const Sidebar = () => {
   return (
-    <div className="py-5 flex flex-col justify-between gap-24 bg-lightGray border-r border-[#EBECF2]">
+    <div className="py-5 flex flex-col justify-between gap-24 bg-veryLightGray border-r border-[#EBECF2]">
       <div>
         <div className="my-5 flex items-center justify-center">
           <img src={logo} />

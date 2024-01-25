@@ -3,7 +3,7 @@ import arrowDown from "../../assets/icons/arrow-down.svg";
 
 const UserInfo = () => {
   return (
-    <div className="p-2 border border-gray rounded-[28px] flex items-center gap-2">
+    <div className="p-2 border border-gray rounded-[28px] flex items-center gap-2 font-inter">
       <div>
         <img src={profileImg} />
       </div>

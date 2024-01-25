@@ -4,7 +4,7 @@ const DateView = () => {
   return (
     <div className="flex items-center gap-2">
       <img src={calendarIcon} />
-      <span className="text-sm font-medium">November 15, 2023</span>
+      <span className="text-sm font-medium font-inter">November 15, 2023</span>
     </div>
   );
 };

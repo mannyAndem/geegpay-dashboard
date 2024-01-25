@@ -1,4 +1,11 @@
-import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
+import {
+  Bar,
+  BarChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 import { svgRectWithBorderRadius } from "../../utils/svgRectWithBorderRadius";
 
 const SalesGraph = () => {
@@ -18,24 +25,25 @@ const SalesGraph = () => {
   ];
 
   return (
-    <div className="bg-white p-5 rounded-xl">
-      <div className="flex justify-between items-center">
+    <div className="w-full h-full bg-white p-5 rounded-xl">
+      <div className="flex justify-between items-center font-jakarta">
         <h2 className="text-lg font-semibold">Sales Trends</h2>
         <div className="flex gap-3 items-center">
           <span className="text-sm font-medium">Sort by:</span>
-          <select className="px-3 py-1 border border-gray rounded-3xl">
+          <select className="text-xs font-jakarta px-3 py-1 border border-gray rounded-3xl">
             <option>Weekly</option>
             <option>Monthly</option>
             <option>Yearly</option>
           </select>
         </div>
       </div>
-      <div className="mt-8">
-        <ResponsiveContainer width="100%" height={400}>
+      <div className="mt-8 font-jakarta">
+        <ResponsiveContainer width="100%" height={350}>
           <BarChart width={600} height={600} data={data}>
             <Bar dataKey="sales" shape={<RoundedBar />} />
             <XAxis dataKey="name" axisLine={false} />
             <YAxis axisLine={false} />
+            <Tooltip />
           </BarChart>
         </ResponsiveContainer>
       </div>
@@ -58,6 +66,31 @@ const RoundedBar = ({ x, y, width, height }: RoundedBarProps) => {
       fill-opacity="0.1"
     />
   );
+};
+
+interface ToolTipProps {
+  active: boolean;
+  payload: any;
+  label: string;
+}
+const Tooltip = ({ active, payload, label }: ToolTipProps) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="custom-tooltip">
+        <p className="label">{`${label} : ${payload[0].value}`}</p>
+        <div>
+          {payload.map((pld) => (
+            <div style={{ display: "inline-block", padding: 10 }}>
+              <div style={{ color: pld.fill }}>{pld.value}</div>
+              <div>{pld.dataKey}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  return null;
 };
 
 export default SalesGraph;
