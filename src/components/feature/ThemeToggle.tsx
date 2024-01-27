@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import lightIcon from "../../assets/icons/brightness 1.svg";
 import darkIcon from "../../assets/icons/moon 1.svg";
 import { useThemeContext } from "../../contexts/ThemeContext";
