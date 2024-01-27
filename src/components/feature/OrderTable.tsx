@@ -1,4 +1,3 @@
-import documentIcon from "../../assets/icons/document-icon.svg";
 import marcusImg from "../../assets/images/marcus.png";
 import jaydenImg from "../../assets/images/jayden.png";
 import coreyImg from "../../assets/images/corey.png";
@@ -70,8 +69,8 @@ const OrderTable = () => {
             <th className="font-medium">Status</th>
             <th className="font-medium">Invoice</th>
           </tr>
-          {orders.map((order) => (
-            <OrderRow order={order} />
+          {orders.map((order, index) => (
+            <OrderRow key={index} order={order} />
           ))}
         </tbody>
       </table>
@@ -113,10 +112,6 @@ const OrderRow = ({ order }: OrderRowProps) => {
         {status}
       </td>
       <td className="p-1 border-b border-lightGray dark:border-lightGreen">
-        {/* <button className="w-full flex items-center gap-2 transition-all duration-300 ease-out hover:scale-105">
-          <img src={documentIcon} />
-          <span className="text-sm">View</span>
-        </button> */}
         <ViewOrderButton order={order} />
       </td>
     </tr>
