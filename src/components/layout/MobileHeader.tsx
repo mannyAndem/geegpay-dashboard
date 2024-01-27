@@ -18,12 +18,12 @@ const MobileHeader = () => {
   };
   return (
     <div className="p-5 flex items-center gap-6 justify-between bg-smokeGray border-b border-[#EBECF2] dark:bg-darkGreen dark:bg-opacity-70 dark:border-paleGreen">
-      {theme === "light" ? (
+      {theme === "light sticky top-5" ? (
         <button className="z-50" onClick={toggleSideBarExpanded}>
           {sideBarExpanded ? <img src={closeIcon} /> : <img src={menuIcon} />}
         </button>
       ) : (
-        <button className="z-50" onClick={toggleSideBarExpanded}>
+        <button className="z-50 sticky top-5" onClick={toggleSideBarExpanded}>
           {sideBarExpanded ? (
             <img src={closeIconDark} />
           ) : (
