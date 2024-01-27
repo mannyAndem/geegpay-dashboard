@@ -5,7 +5,7 @@ import UserInfo from "../ui/UserInfo";
 
 const Header = () => {
   return (
-    <div className="p-5 flex items-center gap-6 justify-between bg-smokeGray border-b border-[#EBECF2]">
+    <div className="p-5 flex items-center gap-6 justify-between bg-smokeGray border-b border-[#EBECF2] dark:bg-darkGreen dark:bg-opacity-70 dark:border-paleGreen">
       <div className="w-[60%] flex items-center justify-between">
         <h1 className="font-jakarta text-xl text-dark font-semibold">
           Dashboard

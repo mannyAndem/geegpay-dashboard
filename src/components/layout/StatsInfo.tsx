@@ -10,7 +10,7 @@ import incomeIcon from "../../assets/icons/icon-income.svg";
 
 const StatsInfo = () => {
   return (
-    <div className="h-full w-full grid grid-cols-2 gap-4">
+    <div className="h-full w-full flex flex-col items-center gap-4 lg:grid lg:grid-cols-2">
       <StatCard
         label="Total Order"
         amount={350}

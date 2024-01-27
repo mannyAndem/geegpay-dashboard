@@ -14,7 +14,7 @@ const StatCard = ({
   performanceGraph,
 }: StatCardProps) => {
   return (
-    <div className="p-4 w-full h-full flex flex-col gap-3 justify-between bg-white rounded-xl font-jakarta">
+    <div className="p-4 w-full h-full flex flex-col gap-3 justify-between bg-white rounded-xl shadow-sm font-jakarta dark:bg-paleGreen">
       <div className="flex items-center justify-between">
         <img src={icon} />
         <img src={graph} />

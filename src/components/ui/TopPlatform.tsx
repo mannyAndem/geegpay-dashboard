@@ -4,7 +4,7 @@ import progressBar3 from "../../assets/images/progress bar (2).svg";
 
 const TopPlatform = () => {
   return (
-    <div className="w-full bg-white rounded-xl p-5 font-jakarta">
+    <div className="w-full bg-white rounded-xl p-5 font-jakarta dark:bg-paleGreen">
       <div className="flex items-center justify-between mb-5">
         <span className="text-lg font-semibold">Top Platform</span>
         <button className="text-lg text-green font-medium">See All</button>

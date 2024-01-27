@@ -4,8 +4,9 @@ import jaydenImg from "../../assets/images/jayden.png";
 import coreyImg from "../../assets/images/corey.png";
 import cooperImg from "../../assets/images/cooper.png";
 import philipImg from "../../assets/images/philip.png";
+import ViewOrderButton from "./ViewOrderButton";
 
-interface Order {
+export interface Order {
   img: string;
   name: string;
   date: string;
@@ -55,12 +56,12 @@ const OrderTable = () => {
   ];
 
   return (
-    <div className=" bg-white rounded-xl p-5 font-jakarta">
+    <div className=" bg-white overflow-x-scroll rounded-xl p-5 font-jakarta dark:bg-paleGreen">
       <div className="mb-4 flex items-center justify-between">
         <span className="text-lg font-semibold">Last Orders</span>
         <button className="text-green font-medium text-lg">See All</button>
       </div>
-      <table className="w-full text-left table border-separate border-spacing-y-4">
+      <table className="w-full  min-w-[550px] text-left table border-spacing-y-4 border-separate">
         <tbody>
           <tr className="text-darkGray colum mb-8">
             <th className="font-medium">Name</th>
@@ -69,14 +70,8 @@ const OrderTable = () => {
             <th className="font-medium">Status</th>
             <th className="font-medium">Invoice</th>
           </tr>
-          {orders.map(({ name, img, date, amount, status }) => (
-            <OrderRow
-              name={name}
-              date={date}
-              amount={amount}
-              status={status}
-              img={img}
-            />
+          {orders.map((order) => (
+            <OrderRow order={order} />
           ))}
         </tbody>
       </table>
@@ -86,33 +81,43 @@ const OrderTable = () => {
 
 export default OrderTable;
 
-const OrderRow = ({ img, name, date, amount, status }: Order) => {
+interface OrderRowProps {
+  order: Order;
+}
+
+const OrderRow = ({ order }: OrderRowProps) => {
+  const { img, name, date, amount, status } = order;
   return (
-    <tr>
-      <td>
-        <div className="flex items-center gap-3">
+    <tr className="border-b border-lightGray dark:border-lightGreen">
+      <td className="p-1 border-b border-lightGray dark:border-lightGreen">
+        <div className="w-full flex items-center gap-3">
           <img
             src={img}
             alt={name}
             className="w-8 h-8 rounded-full object-cover"
           />
-          <span className="font-medium">Marcus Bergson</span>
+          <span className="font-medium">{name}</span>
         </div>
       </td>
-      <td className="text-darkGray">{date}</td>
-      <td className="font-medium">${amount.toLocaleString()}</td>
+      <td className="p-1 text-darkGray border-b border-lightGray dark:border-lightGreen">
+        {date}
+      </td>
+      <td className="p-1 font-medium border-b border-lightGray dark:border-lightGreen">
+        ${amount.toLocaleString()}
+      </td>
       <td
-        className={`capitalize ${
+        className={`p-1 capitalize border-b border-lightGray dark:border-lightGreen ${
           status === "paid" ? "text-green" : "text-red"
         }`}
       >
         {status}
       </td>
-      <td>
-        <button className="flex items-center gap-2">
+      <td className="p-1 border-b border-lightGray dark:border-lightGreen">
+        {/* <button className="w-full flex items-center gap-2 transition-all duration-300 ease-out hover:scale-105">
           <img src={documentIcon} />
           <span className="text-sm">View</span>
-        </button>
+        </button> */}
+        <ViewOrderButton order={order} />
       </td>
     </tr>
   );

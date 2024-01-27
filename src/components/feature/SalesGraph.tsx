@@ -7,6 +7,7 @@ import {
   YAxis,
 } from "recharts";
 import { svgRectWithBorderRadius } from "../../utils/svgRectWithBorderRadius";
+import { useThemeContext } from "../../contexts/ThemeContext";
 
 const SalesGraph = () => {
   const data = [
@@ -25,11 +26,13 @@ const SalesGraph = () => {
   ];
 
   return (
-    <div className="w-full h-full bg-white p-5 rounded-xl">
+    <div className="w-full h-full bg-white p-5 rounded-xl shadow-sm dark:bg-paleGreen">
       <div className="flex justify-between items-center font-jakarta">
         <h2 className="text-lg font-semibold">Sales Trends</h2>
         <div className="flex gap-3 items-center">
-          <span className="text-sm font-medium">Sort by:</span>
+          <span className="text-sm font-medium dark:bg-paleGreen">
+            Sort by:
+          </span>
           <select className="text-xs font-jakarta px-3 py-1 border border-gray rounded-3xl">
             <option>Weekly</option>
             <option>Monthly</option>
@@ -37,13 +40,13 @@ const SalesGraph = () => {
           </select>
         </div>
       </div>
-      <div className="mt-8 font-jakarta">
+      <div className="mt-8 font-jakarta dark:text-lightGreen">
         <ResponsiveContainer width="100%" height={350}>
           <BarChart width={600} height={600} data={data}>
             <Bar dataKey="sales" shape={<RoundedBar />} />
             <XAxis dataKey="name" axisLine={false} />
             <YAxis axisLine={false} />
-            <Tooltip />
+            <Tooltip cursor={{ fill: "#9EC8B9" }} />
           </BarChart>
         </ResponsiveContainer>
       </div>
@@ -59,11 +62,12 @@ interface RoundedBarProps {
 }
 
 const RoundedBar = ({ x, y, width, height }: RoundedBarProps) => {
+  const { theme } = useThemeContext();
   return (
     <path
       d={svgRectWithBorderRadius(x!, y!, width!, height!, 24, 24, 0, 0)}
       fill="#34CAA5"
-      fill-opacity="0.1"
+      fill-opacity={theme === "light" ? "0.1" : "0.4"}
     />
   );
 };

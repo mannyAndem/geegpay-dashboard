@@ -13,7 +13,9 @@ const SidebarIcon = ({ icon, to }: SidebarIconProps) => {
           to={to}
           className={({ isActive }) =>
             `w-full px-3 flex justify-center border-r-4 transition-all duration-150 ease-out ${
-              isActive ? "border-r-black " : "border-r-transparent"
+              isActive
+                ? "border-r-[#0D062D] dark:border-r-lightGreen"
+                : "border-r-transparent"
             }`
           }
         >

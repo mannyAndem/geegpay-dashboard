@@ -3,3 +3,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+p,
+span,
+h1,
+h2,
+h3,
+div,
+button {
+  @apply text-dark dark:text-lightGreen;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray rounded-lg;
+}

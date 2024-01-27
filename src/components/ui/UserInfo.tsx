@@ -32,7 +32,7 @@ const UserInfo = () => {
           <div className="flex flex-col gap-2">
             <span>Account Information</span>
             <span>Profile Settings</span>
-            <span>Logout</span>
+            <span className="text-red">Logout</span>
           </div>
         </Popup>
       </div>

@@ -11,6 +11,10 @@ import arrowRight from "../../assets/icons/arrow-right.svg";
 import settingsIcon from "../../assets/icons/setting-2.svg";
 import logoutIcon from "../../assets/icons/logout.png";
 
+interface MobileSidebarProps {
+  expanded: boolean;
+}
+
 const LINKS = [
   {
     to: "/",
@@ -38,9 +42,13 @@ const LINKS = [
   },
 ];
 
-const Sidebar = () => {
+const MobileSidebar = ({ expanded }: MobileSidebarProps) => {
   return (
-    <div className="sticky top-0 py-5 flex flex-col justify-between gap-24 bg-veryLightGray border-r border-[#EBECF2] dark:bg-darkGreen dark:border-paleGreen">
+    <div
+      className={`${
+        expanded ? "scale-x-100" : "scale-x-0"
+      } origin-left transition-all duration-300 ease-out pt-16 absolute top-0 left-0 bottom-0 w-[40vw] flex flex-col justify-between gap-8 bg-veryLightGray border-r border-[#EBECF2] dark:bg-darkGreen dark:border-paleGreen z-30`}
+    >
       <div>
         <div className="my-5 flex items-center justify-center">
           <img src={logo} />
@@ -63,4 +71,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default MobileSidebar;
